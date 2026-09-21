@@ -30,12 +30,11 @@
 
                     <?php
 
-                    include_once '../models/Fornecedor.php';
+                    include_once '../../Controller/FornecedorController.php';
 
-                    $for = new Fornecedor();
+                    $controller = new FornecedorController();
 
-                    // SEM PROCEDURE
-                    $dados = $for->listarSemProcedure();
+                    $dados = $controller->listar();
 
                     if ($dados) {
 

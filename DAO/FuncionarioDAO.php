@@ -56,26 +56,6 @@ class FuncionarioDAO
         return $funcionario;
 
     }
-    {
-        $sql = "SELECT * FROM {$this->tabela} WHERE id = ?";
-        $executar = $this->conn->prepare($sql);
-        $executar->bindValue(1, $id);
-        $executar->execute();
-        $dados = $executar->fetch(PDO::FETCH_ASSOC);
-
-        if (!$dados) {
-            return null;
-        }
-
-        $funcionario = new Funcionario();
-        $funcionario->setId($dados["id"]);
-        $funcionario->setNome($dados["nome"]);
-        $funcionario->setEmail($dados["email"]);
-        $funcionario->setCargo($dados["cargo"]);
-
-        return $funcionario;
-
-    }
 
     public function salvar(Funcionario $funcionario): bool
     {

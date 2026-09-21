@@ -30,12 +30,11 @@
 
                     <?php
 
-                    include_once '../models/Cliente.php';
+                    include_once '../../Controller/ClienteController.php';
 
-                    $cli = new Cliente();
+                    $controller = new ClienteController();
 
-                    // SEM PROCEDURE
-                    $dados = $cli->listarSemProcedure();
+                    $dados = $controller->listar();
 
                     if ($dados) {
 
@@ -43,6 +42,7 @@
                     ?>
 
                     <tr>
+
                         <td><?= $mostrar['id'] ?></td>
                         <td><?= $mostrar['nome'] ?></td>
                         <td><?= $mostrar['email'] ?></td>

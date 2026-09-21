@@ -73,19 +73,11 @@
 
 if (filter_input(INPUT_POST, 'btnsalvar')) {
 
-    $nome = filter_input(INPUT_POST, 'txtnome');
-    $email = filter_input(INPUT_POST, 'txtemail');
+    include_once '../../controller/ClienteController.php';
 
-    include_once '../models/Cliente.php';
+    $controller = new ClienteController();
 
-    $cli = new Cliente();
-
-    $cli->setID(NULL);
-    $cli->setNome($nome);
-    $cli->setEmail($email);
-
-    // SEM PROCEDURE
-    if ($cli->inserir()) {
+    if ($controller->salvar()) {
 ?>
 
         <div class="alert alert-primary mt-3" role="alert">

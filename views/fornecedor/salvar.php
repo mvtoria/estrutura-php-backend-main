@@ -73,19 +73,11 @@
 
 if (filter_input(INPUT_POST, 'btnsalvar')) {
 
-    $nome = filter_input(INPUT_POST, 'txtnome');
-    $cidade = filter_input(INPUT_POST, 'txtcidade');
+    include_once '../../controller/FornecedorController.php';
 
-    include_once '../models/Fornecedor.php';
+    $controller = new FornecedorController();
 
-    $for = new Fornecedor();
-
-    $for->setID(NULL);
-    $for->setNome($nome);
-    $for->setCidade($cidade);
-
-    // SEM PROCEDURE
-    if ($for->inserir()) {
+    if ($controller->salvar()) {
 ?>
 
         <div class="alert alert-primary mt-3" role="alert">

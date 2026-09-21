@@ -4,12 +4,11 @@ $id = filter_input(INPUT_GET, 'id');
 
 if ($id) {
 
-    include_once '../models/Fornecedor.php';
+    include_once '../../DAO/FornecedorDAO.php';
 
-    $for = new Fornecedor();
-    $for->setID($id);
+    $dao = new FornecedorDAO();
 
-    if ($for->excluir()) {
+    if ($dao->excluir((int)$id)) {
 ?>
 
         <div class="alert alert-primary" role="alert">

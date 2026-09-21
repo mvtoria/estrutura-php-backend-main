@@ -4,12 +4,11 @@ $id = filter_input(INPUT_GET, 'id');
 
 if ($id) {
 
-    include_once '../models/Cliente.php';
+    include_once '../../DAO/ClienteDAO.php';
 
-    $cli = new Cliente();
-    $cli->setID($id);
+    $dao = new ClienteDAO();
 
-    if ($cli->excluir()) {
+    if ($dao->excluir((int)$id)) {
 ?>
 
         <div class="alert alert-primary" role="alert">
