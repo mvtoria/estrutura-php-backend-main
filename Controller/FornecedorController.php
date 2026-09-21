@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once "../model/Fornecedor.php";
-require_once "../dao/FornecedorDAO.php";
+require_once "/../models/Fornecedor.php";
+require_once "/../DAO/FornecedorDAO.php";
 
 class FornecedorController
 {
@@ -23,13 +23,8 @@ class FornecedorController
 
     public function salvar(): bool
     {
-        $this->fornecedor->setNome(
-            filter_input(INPUT_POST, "txtnome")
-        );
-
-        $this->fornecedor->setCidade(
-            filter_input(INPUT_POST, "txtcidade")
-        );
+        $this->fornecedor->setNome(filter_input(INPUT_POST, "txtnome"));
+        $this->fornecedor->setCidade(filter_input(INPUT_POST, "txtcidade"));
 
         return $this->dao->salvar($this->fornecedor);
     }

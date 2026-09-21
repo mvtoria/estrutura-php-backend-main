@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once "../model/Cliente.php";
-require_once "../dao/ClienteDAO.php";
+require_once "/../models/Cliente.php";
+require_once "/../DAO/ClienteDAO.php";
 
 class ClienteController
 {
@@ -23,13 +23,8 @@ class ClienteController
 
     public function salvar(): bool
     {
-        $this->cliente->setNome(
-            filter_input(INPUT_POST, "txtnome")
-        );
-
-        $this->cliente->setEmail(
-            filter_input(INPUT_POST, "txtemail")
-        );
+        $this->cliente->setNome(filter_input(INPUT_POST, "txtnome"));
+        $this->cliente->setEmail(filter_input(INPUT_POST, "txtemail"));
 
         return $this->dao->salvar($this->cliente);
     }

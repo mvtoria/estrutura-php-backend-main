@@ -4,7 +4,7 @@ $id = filter_input(INPUT_GET, 'id');
 
 if ($id) {
 
-    include_once '../../DAO/FornecedorDAO.php';
+    include_once __DIR__ . '/../../DAO/FornecedorDAO.php';
 
     $dao = new FornecedorDAO();
 

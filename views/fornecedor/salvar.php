@@ -73,7 +73,7 @@
 
 if (filter_input(INPUT_POST, 'btnsalvar')) {
 
-    include_once '../../controller/FornecedorController.php';
+    include_once __DIR__ . '/../../Controller/FornecedorController.php';
 
     $controller = new FornecedorController();
 

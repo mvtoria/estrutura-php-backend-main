@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once '../model/Conn.php';
-require_once '../model/Funcionario.php';
+require_once '../models/Conn.php';
+require_once '../models/Funcionario.php';
 
 class FuncionarioDAO
 {

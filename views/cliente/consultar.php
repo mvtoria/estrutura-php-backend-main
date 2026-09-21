@@ -30,7 +30,7 @@
 
                     <?php
 
-                    include_once '../../Controller/ClienteController.php';
+                    include_once __DIR__ . '/../../Controller/ClienteController.php';
 
                     $controller = new ClienteController();
 

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once '../model/Conn.php';
-require_once '../model/Cliente.php';
+require_once '../models/Conn.php';
+require_once '../models/Cliente.php';
 
 class ClienteDAO
 {
