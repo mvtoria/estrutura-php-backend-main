@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once '../models/Conn.php';
-require_once '../model/Categoria.php';
+require_once __DIR__ . '/../models/Conn.php';
+require_once __DIR__ . '/../models/Categoria.php';
 
 class CategoriaDAO
 {

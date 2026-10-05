@@ -22,7 +22,7 @@
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Ações</th>
+                        <th>Telefone</th>
                     </tr>
                 </thead>
 
@@ -46,8 +46,17 @@
                         <td><?= $mostrar['id'] ?></td>
                         <td><?= $mostrar['nome'] ?></td>
                         <td><?= $mostrar['email'] ?></td>
+                        <td><?= $mostrar['telefone'] ?></td>
 
                         <td>
+
+                            <a href="?p=alterar/cliente&id=<?=$mostrar['id'] ?>"
+                            class="btn btn-primary"
+                            title="Alterar">
+
+                            <i class="bi bi-pencil"></i>
+
+                            </a> 
 
                             <a href="?p=excluir/cliente&id=<?= $mostrar['id'] ?>"
                                class="btn btn-danger"

@@ -10,63 +10,65 @@
           class="m-3">
 
         <div class="form-group row">
-
-            <label for="txtnome"
+            <label for="txtrazao_social"
                    class="col-sm-2 col-form-label">
-                Nome
+                Razão Social
             </label>
 
             <div class="col-sm-10">
-
                 <input type="text"
                        class="form-control"
-                       id="txtnome"
-                       name="txtnome"
-                       placeholder="Fornecedor">
-
+                       id="txtrazao_social"
+                       name="txtrazao_social"
+                       placeholder="Razão Social">
             </div>
-
         </div>
 
         <div class="form-group row">
-
-            <label for="txtcidade"
+            <label for="txtemail"
                    class="col-sm-2 col-form-label">
-                Cidade
+                Email
             </label>
 
             <div class="col-sm-10">
-
-                <input type="text"
+                <input type="email"
                        class="form-control"
-                       id="txtcidade"
-                       name="txtcidade"
-                       placeholder="Cidade">
-
+                       id="txtemail"
+                       name="txtemail"
+                       placeholder="Email">
             </div>
-
         </div>
 
         <div class="form-group row">
+            <label for="txttelefone"
+                   class="col-sm-2 col-form-label">
+                Telefone
+            </label>
 
             <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       id="txttelefone"
+                       name="txttelefone"
+                       placeholder="Telefone">
+            </div>
+        </div>
 
+        <div class="form-group row">
+            <div class="col-sm-10">
                 <input type="submit"
                        class="btn btn-primary"
                        name="btnsalvar"
                        value="Cadastrar">
-
             </div>
 
             <a href="?p=fornecedores"
                class="btn btn-danger">
                 Cancelar
             </a>
-
         </div>
 
     </form>
-
 </div>
 
 <?php
@@ -88,7 +90,9 @@ if (filter_input(INPUT_POST, 'btnsalvar')) {
               content="0.2;URL=?p=fornecedores">
 
 <?php
+
     } else {
+
 ?>
 
         <div class="alert alert-danger mt-3" role="alert">
@@ -96,6 +100,8 @@ if (filter_input(INPUT_POST, 'btnsalvar')) {
         </div>
 
 <?php
+
     }
 }
+
 ?>

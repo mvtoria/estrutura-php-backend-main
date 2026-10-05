@@ -5,8 +5,9 @@ include_once 'Conn.php';
 class Fornecedor
 {
     private $id;
-    private $nome;
-    private $cidade;
+    private $razao_social;
+    private $email;
+    private $telefone;
     private $conn;
     private $tabela = "fornecedor";
 
@@ -21,25 +22,36 @@ class Fornecedor
         return $this;
     }
 
-    public function getNome(): mixed
+    public function getRazaoSocial(): mixed
     {
-        return $this->nome;
+        return $this->razao_social;
     }
 
-    public function setNome($nome): static
+    public function setRazaoSocial($razao_social): static
     {
-        $this->nome = $nome;
+        $this->razao_social = $razao_social;
         return $this;
     }
 
-    public function getCidade(): mixed
+    public function getEmail(): mixed
     {
-        return $this->cidade;
+        return $this->email;
     }
 
-    public function setCidade($cidade): static
+    public function setEmail($email): static
     {
-        $this->cidade = $cidade;
+        $this->email = $email;
+        return $this;
+    }
+
+    public function getTelefone(): mixed
+    {
+        return $this->telefone;
+    }
+
+    public function setTelefone($telefone): static
+    {
+        $this->telefone = $telefone;
         return $this;
     }
 

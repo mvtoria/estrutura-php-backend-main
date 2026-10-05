@@ -4,7 +4,7 @@ $id = filter_input(INPUT_GET, 'id');
 
 if ($id) {
 
-    include_once '../models/Funcionario.php';
+    include_once __DIR__ . '/../../models/Funcionario.php';
 
     $func = new Funcionario();
     $func->setID($id);

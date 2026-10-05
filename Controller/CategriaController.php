@@ -3,8 +3,8 @@
 //exige a tipificação dos atributos e métodos
 declare(strict_types=1);
 
-require_once "../model/Categoria.php";
-require_once "../dao/CategoriaDAO.php";
+require_once __DIR__ . '/../models/Categoria.php';
+require_once __DIR__ . '/../DAO/CategoriaDAO.php';
 
 class CategoriaController
 {

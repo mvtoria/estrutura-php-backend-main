@@ -28,7 +28,7 @@
 
                     <?php
 
-                    include_once '../models/Categoria.php';
+                    include_once __DIR__ . '/../../models/Categoria.php';
 
                     $cat = new Categoria();
 

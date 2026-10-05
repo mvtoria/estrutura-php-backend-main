@@ -6,6 +6,7 @@ class Cliente
     private $id;
     private $nome;
     private $email;
+    private $telefone;
     private $conn;
     private $tabela = "cliente";
 
@@ -39,6 +40,17 @@ class Cliente
     public function setEmail($email): static
     {
         $this->email = $email;
+        return $this;
+    }
+
+    public function getTelefone(): mixed
+    {
+        return $this->telefone;
+    }
+
+    public function setTelefone($telefone): static
+    {
+        $this->telefone = $telefone;
         return $this;
     }
 

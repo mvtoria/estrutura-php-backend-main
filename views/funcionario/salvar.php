@@ -96,7 +96,7 @@ if (filter_input(INPUT_POST, 'btnsalvar')) {
     $email = filter_input(INPUT_POST, 'txtemail');
     $cargo = filter_input(INPUT_POST, 'txtcargo');
 
-    include_once '../models/Funcionario.php';
+    include_once __DIR__ . '/../../models/Funcionario.php';
 
     $func = new Funcionario();
 

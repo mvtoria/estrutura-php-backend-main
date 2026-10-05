@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-require_once "/../models/Cliente.php";
-require_once "/../DAO/ClienteDAO.php";
+require_once __DIR__ . '/../models/Cliente.php';
+require_once __DIR__ . '/../DAO/ClienteDAO.php';
 
 class ClienteController
 {
@@ -25,6 +25,7 @@ class ClienteController
     {
         $this->cliente->setNome(filter_input(INPUT_POST, "txtnome"));
         $this->cliente->setEmail(filter_input(INPUT_POST, "txtemail"));
+        $this->cliente->setTelefone(filter_input(INPUT_POST, "txttelefone"));
 
         return $this->dao->salvar($this->cliente);
     }

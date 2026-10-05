@@ -31,7 +31,7 @@
 
                     <?php
 
-                    include_once '../models/Funcionario.php';
+                    include_once __DIR__ . '/../../models/Funcionario.php';
 
                     $func = new Funcionario();
 

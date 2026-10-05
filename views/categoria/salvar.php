@@ -76,7 +76,7 @@ if (filter_input(INPUT_POST, 'btnsalvar')) {
     $nome = filter_input(INPUT_POST, 'txtnome');
     $info = filter_input(INPUT_POST, 'txtinformacoes');
 
-    include_once '../models/Categoria.php';
+    include_once __DIR__ . '/../../models/Categoria.php';
 
     $cat = new Categoria();
 

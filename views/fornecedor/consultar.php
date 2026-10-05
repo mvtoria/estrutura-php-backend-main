@@ -20,8 +20,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
-                        <th>Cidade</th>
+                        <th>Razão Social</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -44,20 +45,32 @@
                     <tr>
 
                         <td><?= $mostrar['id'] ?></td>
-                        <td><?= $mostrar['nome'] ?></td>
-                        <td><?= $mostrar['cidade'] ?></td>
+                        <td><?= $mostrar['razao_social'] ?></td>
+                        <td><?= $mostrar['email'] ?></td>
+                        <td><?= $mostrar['telefone'] ?></td>
 
                         <td>
 
-                            <a href="?p=excluir/fornecedor&id=<?= $mostrar['id'] ?>"
-                               class="btn btn-danger"
-                               title="Excluir"
-                               onclick="return confirm('Tem certeza que deseja excluir?')">
+                            <td>
 
-                                <i class="bi bi-x-circle"></i>
+                                <a href="?p=alterar/fornecedor&id=<?= $mostrar['id'] ?>" 
+                                class="btn btn-primary"
+                                title="Alterar">
 
-                            </a>
+                                    <i class="bi bi-pencil"></i>
 
+                                </a>
+
+                                <a href="?p=excluir/fornecedor&id=<?= $mostrar['id'] ?>" 
+                                class="btn btn-danger" 
+                                title="Excluir" 
+                                onclick="return confirm('Tem certeza que deseja excluir?')">
+
+                                    <i class="bi bi-x-circle"></i>
+
+                                </a>
+
+                            </td>
                         </td>
 
                     </tr>

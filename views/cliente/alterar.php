@@ -1,5 +1,17 @@
+<?php
+
+$id = filter_input(INPUT_GET, 'id');
+
+include_once __DIR__ . '/../../DAO/ClienteDAO.php';
+
+$dao = new ClienteDAO();
+
+$cliente = $dao->consultarPorID((int)$id);
+
+?>
+
 <h3 class="mt-3 text-primary">
-    Cliente
+    Alterar Cliente
 </h3>
 
 <div class="card shadow mt-3">
@@ -9,11 +21,17 @@
           id="formSalvar"
           class="m-3">
 
+        <input type="hidden"
+               name="id"
+               value="<?= $cliente->getId() ?>">
+
         <div class="form-group row">
 
             <label for="txtnome"
                    class="col-sm-2 col-form-label">
+
                 Nome
+
             </label>
 
             <div class="col-sm-10">
@@ -22,7 +40,7 @@
                        class="form-control"
                        id="txtnome"
                        name="txtnome"
-                       placeholder="Cliente">
+                       value="<?= $cliente->getNome() ?>">
 
             </div>
 
@@ -32,7 +50,9 @@
 
             <label for="txtemail"
                    class="col-sm-2 col-form-label">
+
                 Email
+
             </label>
 
             <div class="col-sm-10">
@@ -41,7 +61,7 @@
                        class="form-control"
                        id="txtemail"
                        name="txtemail"
-                       placeholder="Email">
+                       value="<?= $cliente->getEmail() ?>">
 
             </div>
 
@@ -51,7 +71,9 @@
 
             <label for="txttelefone"
                 class="col-sm-2 col-form-label">
+
                 Telefone
+
             </label>
 
             <div class="col-sm-10">
@@ -60,7 +82,7 @@
                     class="form-control"
                     id="txttelefone"
                     name="txttelefone"
-                    placeholder="Telefone">
+                    value="<?= $cliente->getTelefone() ?>">
 
             </div>
 
@@ -73,13 +95,15 @@
                 <input type="submit"
                        class="btn btn-primary"
                        name="btnsalvar"
-                       value="Cadastrar">
+                       value="Salvar">
 
             </div>
 
             <a href="?p=clientes"
                class="btn btn-danger">
+
                 Cancelar
+
             </a>
 
         </div>
@@ -92,15 +116,17 @@
 
 if (filter_input(INPUT_POST, 'btnsalvar')) {
 
-    include_once __DIR__ . '/../../Controller/ClienteController.php';
+    $cliente->setNome(filter_input(INPUT_POST, "txtnome"));
+    $cliente->setEmail(filter_input(INPUT_POST, "txtemail"));
+    $cliente->setTelefone(filter_input(INPUT_POST, "txttelefone"));
 
-    $controller = new ClienteController();
-
-    if ($controller->salvar()) {
+    if ($dao->salvar($cliente)) {
 ?>
 
         <div class="alert alert-primary mt-3" role="alert">
-            Cliente - cadastro efetuado com sucesso.
+
+            Cliente - alteração efetuada com sucesso.
+
         </div>
 
         <meta http-equiv="refresh"
@@ -111,7 +137,9 @@ if (filter_input(INPUT_POST, 'btnsalvar')) {
 ?>
 
         <div class="alert alert-danger mt-3" role="alert">
-            Cliente - erro ao cadastrar.
+
+            Cliente - erro ao alterar.
+
         </div>
 
 <?php

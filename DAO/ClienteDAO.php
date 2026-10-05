@@ -51,6 +51,7 @@ class ClienteDAO
         $cliente->setId($dados["id"]);
         $cliente->setNome($dados["nome"]);
         $cliente->setEmail($dados["email"]);
+        $cliente->setTelefone($dados["telefone"]);
 
         return $cliente;
 
@@ -61,26 +62,29 @@ class ClienteDAO
         if ($cliente->getId() == null) {
 
             $sql = "INSERT INTO cliente
-                    (nome,email)
-                    VALUES
-                    (?,?)";
+        (nome,email,telefone)
+        VALUES
+        (?,?,?)";
 
             $stmt = $this->conn->prepare($sql);
 
             $stmt->bindValue(1, $this->texto($cliente->getNome()));
             $stmt->bindValue(2, $this->texto($cliente->getEmail()));
+            $stmt->bindValue(3, $this->texto($cliente->getTelefone()));
         } else {
 
             $sql = "UPDATE cliente
-                       SET nome=?,
-                           email=?
-                     WHERE id=?";
+           SET nome=?,
+               email=?,
+               telefone=?
+         WHERE id=?";
 
             $stmt = $this->conn->prepare($sql);
 
             $stmt->bindValue(1, $this->texto($cliente->getNome()));
             $stmt->bindValue(2, $this->texto($cliente->getEmail()));
-            $stmt->bindValue(3, $cliente->getId());
+            $stmt->bindValue(3, $this->texto($cliente->getTelefone()));
+            $stmt->bindValue(4, $cliente->getId());
         }
 
         return $stmt->execute();
