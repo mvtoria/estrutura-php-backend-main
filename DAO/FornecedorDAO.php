@@ -25,7 +25,7 @@ class FornecedorDAO
         $sql = "DELETE FROM {$this->tabela} WHERE id = ?";
 
         $executar = $this->conn->prepare($sql);
-        $executar->bindValue(1, $id);
+        $executar->bindValue(1, $id, PDO::PARAM_INT);
 
         return $executar->execute();
     }
@@ -44,7 +44,7 @@ class FornecedorDAO
         $sql = "SELECT * FROM {$this->tabela} WHERE id = ?";
 
         $executar = $this->conn->prepare($sql);
-        $executar->bindValue(1, $id);
+        $executar->bindValue(1, $id, PDO::PARAM_INT);
         $executar->execute();
 
         $dados = $executar->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ class FornecedorDAO
 
         $fornecedor = new Fornecedor();
 
-        $fornecedor->setId($dados["id"]);
+        $fornecedor->setId((int) $dados["id"]);
         $fornecedor->setRazaoSocial($dados["razao_social"]);
         $fornecedor->setEmail($dados["email"]);
         $fornecedor->setTelefone($dados["telefone"]);
@@ -65,7 +65,7 @@ class FornecedorDAO
 
     public function salvar(Fornecedor $fornecedor): bool
     {
-        if ($fornecedor->getId() == null) {
+        if ($fornecedor->getId() === null) {
 
             $sql = "INSERT INTO fornecedor
                     (razao_social, email, telefone)
@@ -116,7 +116,8 @@ class FornecedorDAO
 
             $stmt->bindValue(
                 4,
-                $fornecedor->getId()
+                $fornecedor->getId(),
+                PDO::PARAM_INT
             );
         }
 

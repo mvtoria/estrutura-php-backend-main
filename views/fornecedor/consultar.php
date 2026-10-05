@@ -52,8 +52,7 @@
                         <td>
 
                             <td>
-
-                                <a href="?p=alterar/fornecedor&id=<?= $mostrar['id'] ?>" 
+                                <a href="?p=alterar/fornecedor&id=<?= $mostrar['id'] ?>"
                                 class="btn btn-primary"
                                 title="Alterar">
 
@@ -61,15 +60,14 @@
 
                                 </a>
 
-                                <a href="?p=excluir/fornecedor&id=<?= $mostrar['id'] ?>" 
-                                class="btn btn-danger" 
-                                title="Excluir" 
+                                <a href="?p=excluir/fornecedor&id=<?= $mostrar['id'] ?>"
+                                class="btn btn-danger"
+                                title="Excluir"
                                 onclick="return confirm('Tem certeza que deseja excluir?')">
 
                                     <i class="bi bi-x-circle"></i>
 
                                 </a>
-
                             </td>
                         </td>
 
