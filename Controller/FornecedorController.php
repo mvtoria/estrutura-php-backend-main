@@ -21,6 +21,11 @@ class FornecedorController
         return $this->dao->listar();
     }
 
+    public function pesquisar(string $razaoSocial): array
+    {
+        return $this->dao->pesquisar($razaoSocial);
+    }
+
     public function consultarPorID(int $id): ?Fornecedor
     {
         return $this->dao->consultarPorID($id);

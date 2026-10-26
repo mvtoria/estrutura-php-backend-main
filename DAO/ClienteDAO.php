@@ -35,6 +35,21 @@ class ClienteDAO
         return $executar->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function pesquisar(string $nome): array
+    {
+        $sql = "SELECT * FROM {$this->tabela}
+                WHERE nome LIKE ?
+                ORDER BY nome";
+
+        $executar = $this->conn->prepare($sql);
+
+        $executar->bindValue(1, "%" . trim($nome) . "%");
+
+        $executar->execute();
+
+        return $executar->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function consultarPorID(int $id): ?Cliente
     {
         $sql = "SELECT * FROM {$this->tabela} WHERE id = ?";

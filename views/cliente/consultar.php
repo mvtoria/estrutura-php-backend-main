@@ -15,6 +15,33 @@
                 </a>
             </h3>
 
+            <form method="get" action="index.php" class="m-3">
+
+                <input type="hidden" name="p" value="clientes">
+
+                <label for="pesquisa">Pesquisar cliente:</label>
+
+                <div class="input-group mb-3">
+
+                    <input type="text"
+                        class="form-control"
+                        id="pesquisa"
+                        name="pesquisa"
+                        placeholder="Digite o nome do cliente"
+                        value="<?= htmlspecialchars($_GET['pesquisa'] ?? '') ?>">
+
+                    <div class="input-group-append">
+
+                        <button type="submit" class="btn btn-primary">
+                            PESQUISAR
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
             <table class="table table-striped table-sm">
 
                 <thead>
@@ -34,7 +61,13 @@
 
                     $controller = new ClienteController();
 
-                    $dados = $controller->listar();
+                    $pesquisa = trim($_GET['pesquisa'] ?? '');
+
+                    if ($pesquisa !== '') {
+                        $dados = $controller->pesquisar($pesquisa);
+                    } else {
+                        $dados = $controller->listar();
+                    }
 
                     if ($dados) {
 
@@ -71,8 +104,18 @@
 
                     </tr>
 
-                    <?php
+                                        <?php
                         }
+                    } else {
+                    ?>
+
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                Nenhum cliente encontrado.
+                            </td>
+                        </tr>
+
+                    <?php
                     }
                     ?>
 

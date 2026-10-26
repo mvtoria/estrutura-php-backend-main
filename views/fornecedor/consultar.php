@@ -15,6 +15,33 @@
                 </a>
             </h3>
 
+            <form method="get" action="index.php" class="m-3">
+
+                <input type="hidden" name="p" value="fornecedores">
+
+                <label for="pesquisa">Pesquisar fornecedor:</label>
+
+                <div class="input-group mb-3">
+
+                    <input type="text"
+                        class="form-control"
+                        id="pesquisa"
+                        name="pesquisa"
+                        placeholder="Digite a razão social"
+                        value="<?= htmlspecialchars($_GET['pesquisa'] ?? '') ?>">
+
+                    <div class="input-group-append">
+
+                        <button type="submit" class="btn btn-primary">
+                            PESQUISAR
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
             <table class="table table-striped table-sm">
 
                 <thead>
@@ -35,46 +62,64 @@
 
                     $controller = new FornecedorController();
 
-                    $dados = $controller->listar();
+                    $pesquisa = trim($_GET['pesquisa'] ?? '');
+
+                    if ($pesquisa !== '') {
+                        $dados = $controller->pesquisar($pesquisa);
+                    } else {
+                        $dados = $controller->listar();
+                    }
 
                     if ($dados) {
 
                         foreach ($dados as $mostrar) {
                     ?>
 
-                    <tr>
+                   <tr>
 
-                        <td><?= $mostrar['id'] ?></td>
-                        <td><?= $mostrar['razao_social'] ?></td>
-                        <td><?= $mostrar['email'] ?></td>
-                        <td><?= $mostrar['telefone'] ?></td>
+                        <td><?= htmlspecialchars($mostrar['id']) ?></td>
+
+                        <td><?= htmlspecialchars($mostrar['razao_social']) ?></td>
+
+                        <td><?= htmlspecialchars($mostrar['email']) ?></td>
+
+                        <td><?= htmlspecialchars($mostrar['telefone']) ?></td>
 
                         <td>
 
-                            <td>
-                                <a href="?p=alterar/fornecedor&id=<?= $mostrar['id'] ?>"
-                                class="btn btn-primary"
-                                title="Alterar">
+                            <a href="?p=alterar/fornecedor&id=<?= (int)$mostrar['id'] ?>"
+                            class="btn btn-primary"
+                            title="Alterar">
 
-                                    <i class="bi bi-pencil"></i>
+                                <i class="bi bi-pencil"></i>
 
-                                </a>
+                            </a>
 
-                                <a href="?p=excluir/fornecedor&id=<?= $mostrar['id'] ?>"
-                                class="btn btn-danger"
-                                title="Excluir"
-                                onclick="return confirm('Tem certeza que deseja excluir?')">
+                            <a href="?p=excluir/fornecedor&id=<?= (int)$mostrar['id'] ?>"
+                            class="btn btn-danger"
+                            title="Excluir"
+                            onclick="return confirm('Tem certeza que deseja excluir?')">
 
-                                    <i class="bi bi-x-circle"></i>
+                                <i class="bi bi-x-circle"></i>
 
-                                </a>
-                            </td>
+                            </a>
+
                         </td>
 
                     </tr>
 
                     <?php
                         }
+                    } else {
+                    ?>
+
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                Nenhum fornecedor encontrado.
+                            </td>
+                        </tr>
+
+                    <?php
                     }
                     ?>
 

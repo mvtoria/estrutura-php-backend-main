@@ -20,7 +20,10 @@ class ClienteController
     {
         return $this->dao->listar();
     }
-
+    public function pesquisar(string $nome): array
+    {
+        return $this->dao->pesquisar($nome);
+    }
     public function salvar(): bool
     {
         $this->cliente->setNome(filter_input(INPUT_POST, "txtnome"));
